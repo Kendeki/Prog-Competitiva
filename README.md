@@ -5,6 +5,7 @@ Contribuidores:
   - [Tsukigva2](https://github.com/TsukiGva2)
   - [Kendeki](https://github.com/Kendeki)
   - [Venckszz](https://github.com/venckszz)
+  - [Rlucas25](https://github.com/rlucas25)
 
 ## Material
 
