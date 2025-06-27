@@ -4,7 +4,7 @@
 int(input())
 
 # pega os balao
-baloes = list(map(int, input().split()))
+baloes = map(int, input().split())
 
 # parte mais importante
 # isso aqui inicializa a lista que contem o

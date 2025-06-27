@@ -1,7 +1,7 @@
 # https://judge.beecrowd.com/en/problems/view/3428
 
 int(input())
-B = list(map(int, input().split()))
+B = map(int, input().split())
 
 A = [0] * (10**6 + 1)
 T = 0
