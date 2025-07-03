@@ -24,7 +24,7 @@ def receber_n_inteiros(n = None, entrada = input, separador = " "):
   if callable(entrada):
     entrada = entrada()
   sep = entrada.split(separador)
-  assert len(sep) == n
+  if n is not None: assert len(sep) == n
   return [int(x) for x in sep]
 
 def receber_linhas(aplicar = None):
