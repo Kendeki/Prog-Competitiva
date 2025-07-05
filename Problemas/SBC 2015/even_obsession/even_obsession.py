@@ -1,6 +1,9 @@
-import heapq
+# https://judge.beecrowd.com/en/problems/view/1931
 
-# UNFINISHED
+# PERDI NOITES DE SONO E TIVE QUE PEDIR AJUDA NO GEEKSFORGEEKS WOMP WOMP
+# Relevante: "Yapping/1931.md"
+
+import heapq
 
 #automatic
 import sys; iC = callable
@@ -15,34 +18,42 @@ def parse(n):
   return readwith(f=lambda l:readint(n,l))
 #automatic
 
-INF = 0x7f7f7f7f7f
+INF = 1e9
 
 C, V = readint(2)
 
-V += 1 # prevent out of bounds
+SIZE = V * 10 + 3
 
-adj = [[] for _ in range(V)]
+adj = [[] for _ in range(SIZE)]
+
+def par(x): return x * 10 + 2
+def impar(x): return x * 10 + 1
 
 for v1, v2, w in parse(3):
-    adj[v1].append((v2, w))
+    adj[par(v1)].append((impar(v2), w))
+    adj[impar(v1)].append((par(v2), w))
+    adj[par(v2)].append((impar(v1), w))
+    adj[impar(v2)].append((par(v1), w))
 
-pq = []
-dist = [INF] * V
-visitados = [False] * V
+def dijkstra(src, dest):
+    pq = []
+    dist = [INF] * SIZE
+    visi = [False] * SIZE
+    
+    dist[par(src)] = 0
+    
+    heapq.heappush(pq, (0, par(src)))
+    
+    while pq:
+        _, u = heapq.heappop(pq)
+        if not visi[u]:
+            visi[u] = True
+            for v, w in adj[u]:
+                if dist[u] + w < dist[v]:
+                    dist[v] = dist[u] + w
+                    heapq.heappush(pq, (dist[v], v))
+                    
+    d = dist[par(dest)]
+    return -1 if d == INF else d
 
-orig = 1
-
-dist[orig] = 0
-
-heapq.heappush(pq, (dist[orig], orig))
-
-while pq:
-    _, u = heapq.heappop(pq)
-    if not visitados[u]:
-        visitados[u] = True
-        for v, c in adj[u]:
-            if dist[v] > (dist[u] + c):
-                dist[v] = dist[u] + c
-                heapq.heappush(pq, (dist[v], v))
-
-print(dist[C])
+print(dijkstra(1, C))
