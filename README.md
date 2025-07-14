@@ -6,6 +6,7 @@ Contribuidores:
   - [Kendeki](https://github.com/Kendeki)
   - [Venckszz](https://github.com/venckszz)
   - [Rlucas25](https://github.com/rlucas25)
+  - [Farraelll](https://github.com/Farraelll)
 
 ## Material
 
