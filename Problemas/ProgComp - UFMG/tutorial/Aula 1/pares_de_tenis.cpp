@@ -11,7 +11,7 @@ void solve()
   ll n, sz, p;
   cin >> n;
   
-  vector<pair<ll, ll>> tamanho(60, pair<ll,ll>(0, 0));
+  vector<pair<ll, ll>> tamanho(61, pair<ll,ll>(0, 0));
   
   p = 0;
   
