@@ -3,14 +3,18 @@
 SCRATCH=""
 CONTINUE=""
 
-printf "Start from scratch? \033[33;1m[y/N]\033[0m: "
-read SCRATCH
+if test -e main.cpp; then
+	printf "Start from scratch? \033[33;1m[y/N]\033[0m: "
+	read SCRATCH
 
-case $SCRATCH in
-	[yY])
-		make clean
-		;;
-esac
+	case $SCRATCH in
+		[yY])
+			make clean
+			;;
+	esac
+else
+	make clean
+fi
 
 while : ; do
 	vim main.cpp -c "below split input.txt"
