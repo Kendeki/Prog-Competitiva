@@ -1,0 +1,19 @@
+#!/bin/sh
+
+printf "This will delete \033[31;1mALL\033[0m your backups!\n"
+printf "Are you sure? \033[33;1m[y/N]\033[0m: "
+
+read YN
+case $YN in
+	[yY])
+		if test -e /tmp/*_main.cpp; then
+			printf "\033[32;1mFound: \n\033[33;1m"
+			ls /tmp/*_main.cpp
+			printf "\033[31;1m"
+			rm -I /tmp/*_main.cpp
+			printf "\033[32;1mDone.\033[0m\n"
+		else
+			printf "\033[31;1mNo backup files found!\033[0m\n"
+		fi
+		;;
+esac

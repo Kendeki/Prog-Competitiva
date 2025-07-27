@@ -1,0 +1,31 @@
+#!/bin/sh
+
+SCRATCH=""
+CONTINUE=""
+
+printf "Start from scratch? \033[33;1m[y/N]\033[0m: "
+read SCRATCH
+
+case $SCRATCH in
+	[yY])
+		make clean
+		;;
+esac
+
+while : ; do
+	vim main.cpp -c "below split input.txt"
+
+	printf "\n\n\n======TEST RESULTS======\n"
+	make test
+	printf "========================\n\n"
+
+	printf "Continue? \033[32;1m[Y/n]\033[0m: "
+	read CONTINUE
+
+	case $CONTINUE in
+		[nN])
+			break
+			;;
+	esac
+done
+
