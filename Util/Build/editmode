@@ -17,7 +17,7 @@ else
 fi
 
 while : ; do
-	vim main.cpp -c "below split input.txt"
+	vim input.text -c "above split main.cpp"
 
 	printf "\n\n\n======TEST RESULTS======\n"
 	make test
