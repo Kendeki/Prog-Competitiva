@@ -1,3 +1,7 @@
+
+.PHONY: all
+all: test
+
 programa: main.cpp
 	g++ -O2 -std=c++17 -Wshadow -fsanitize=address,undefined -Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wno-unused-but-set-variable main.cpp -o programa
 
@@ -5,5 +9,11 @@ programa: main.cpp
 test: programa input.txt
 	./programa < input.txt
 
-.PHONY: all
-all: test
+.PHONY: clean
+clean:
+	rm -f programa
+	test -e main.cpp &&\
+		mv main.cpp /tmp/"$(shell date +%N)"_main.cpp
+	echo "" > input.txt
+	cp template.cpp main.cpp
+
