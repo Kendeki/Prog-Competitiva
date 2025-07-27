@@ -6,7 +6,7 @@ printf "Are you sure? \033[33;1m[y/N]\033[0m: "
 read YN
 case $YN in
 	[yY])
-		if test -e /tmp/*_main.cpp; then
+		if find /tmp -maxdepth 1 -type f -name "*_main.cpp" 2>/dev/null | grep -q . ; then
 			printf "\033[32;1mFound: \n\033[33;1m"
 			ls /tmp/*_main.cpp
 			printf "\033[31;1m"

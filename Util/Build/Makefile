@@ -12,8 +12,9 @@ test: programa input.txt
 .PHONY: clean
 clean:
 	rm -f programa
-	test -e main.cpp &&\
-		mv main.cpp /tmp/"$(shell date +%N)"_main.cpp
+	if test -e main.cpp; then \
+		mv main.cpp /tmp/"$(shell date +%N)"_main.cpp; \
+	fi
 	echo "" > input.txt
 	cp template.cpp main.cpp
 
